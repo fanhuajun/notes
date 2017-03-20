@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 ############################################
 #构建中 batch操作
 ############################################
@@ -10,26 +8,24 @@ cd vanrui-user-app/
 #maven操作
 mvn clean package -P dev -U -Dmaven.test.skip=true
 
-
 #ftp 操作start
 @Echo Off
-Echo open 10.80.138.16 >C:/ftp.up
-Echo FTP_Admin >>C:/ftp.up
-Echo Password11 >>C:/ftp.up
-Echo Cd .\User >>C:/ftp.up
-Echo binary>>C:/ftp.up
-Echo put "D:\User List\User.csv">>C:/ftp.up
+Echo open 139.129.246.118 21>C:/ftp.up
+Echo root>>C:/ftp.up
+Echo fhj(252019)>>C:/ftp.up
+Echo cd /data/fan >>C:/ftp.up
+Echo put E:\fan.txt>>C:/ftp.up
 Echo bye>>C:/ftp.up
-FTP -s:C:/ftp.up
+@Echo on
+cd ..
+ftp -s:C:/ftp.up
 del C:/ftp.up /q
 Pause
-
 #ftp 操作end
 
 ############################################
 #构建后 SSH操作
 ############################################
-
 
 pro="vanrui-user-app"
 pro_dir="/data/fan"
