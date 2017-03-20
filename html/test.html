@@ -1,0 +1,63 @@
+<script id="roleAddListmpl" type="text/html">
+						{{ if it.webSource) }}
+	                   <div class="row">
+	                        <div class="col-md-2">
+	                            <span style="line-height:32px;font-size: 14px;font-weight: bold;">SAAS平台权限分配：</span>
+	                        </div>
+	                    </div>
+                           {{ each it.webSource as product i  }}  
+               
+	                    <div class="form-group">
+	                        <label class="control-label col-md-1 col-sm-2 col-xs-12" for="first-name">{{product.sourceName}}<span class="required"></span>：
+	                        </label>
+ 							
+	                        <div class="control-label col-md-11 col-sm-12 col-xs-12">
+	                            <ul class="list-inline">
+									{{ each product.sonSource as product2 j }}
+	                                <li><span class="icheckweb" sid="{{ product2.sId}}">
+	                                    <div class="icheckbox_flat-green" style="position: relative;">
+	                                        <input type="checkbox" class="flat" checked="checked" style="position: absolute; opacity: 0;">
+	                                        <ins class="iCheck-helper" />
+	                                    </div> {{product2.sName}}
+	                                </span></li>
+								 	{{ /each }}
+	                            </ul>
+	                        </div>
+							
+	                    </div>
+                        {{ /each }}
+
+                        {{ /if }}
+
+                        {{ if it.appSource }}
+	                    <div class="ln_solid"></div>
+						<br>
+                        <div class="row">
+	                        <div class="col-md-2">
+	                            <span style="line-height:32px;font-size: 14px;font-weight: bold;">手机APP权限分配:</span>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label class="control-label col-md-1 col-sm-2 col-xs-12" for="first-name"> <span class="required"></span>
+	                        </label>
+	                        <div class="control-label col-md-11 col-sm-12 col-xs-12">
+	                            <ul class="list-inline">
+                            {{ each it.appSource as product i  }}
+	                                <li><span class="icheckapp" sid="{{=it.appSource[i].sId}}">
+	                                    <div class="icheckbox_flat-green" style="position: relative;">
+	                                        <input type="checkbox" class="flat" checked="checked" style="position: absolute; opacity: 0;">
+	                                        <ins class="iCheck-helper" />
+	                                    </div> {{ product.sName }}
+	                                </span></li>
+							{{ /each }}
+	                            </ul>
+	                        </div>
+	                    </div>
+						{{ /if }}
+						</script>
+
+
+
+				$('#roleAddList').html(template('roleAddListmpl', {
+			it : getAllSource().data
+		}));

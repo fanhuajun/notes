@@ -1,0 +1,54 @@
+<html>
+	<head>
+    <title>fanhuajun test</title>
+	<script id="pagetmpl" type="text/x-dot-template">
+		<h1>{{=it.title}}</h1>
+	</script>
+
+
+	<script src="./jquery.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+		测试js的各种数据类型
+	</body>
+
+	<script type="text/javascript">
+		
+		var data = {
+			"numberT":2,
+			"stringT":"fanhuajun",
+			"childData":{
+				"one":1,
+				"tow":2
+			}
+		}
+
+
+		var typedObject= typeof(data);
+		var typedNumber= typeof(data.numberT);
+		var typeStringT= typeof(data.stringT);
+		var typeundefinedT= typeof(data.string1234);
+
+		var nextdat = typeof(data.childData);
+
+		//打印数据类型
+		console.log("对象类型:"+typedObject);
+		console.log("数字:"+typedNumber);
+		console.log("字符串:"+typeStringT);
+		console.log("未定义:"+typeundefinedT);
+
+		console.log("其他:"+nextdat);
+
+
+
+		//判断方式
+		console.log(typedObject == "object");
+		console.log(typedNumber == "number");
+		console.log(typeStringT == "string");
+		console.log(typeundefinedT == "undefined");
+		
+	</script>
+
+</html>

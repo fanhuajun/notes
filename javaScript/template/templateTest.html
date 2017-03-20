@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>template测试</title>
+</head>
+
+<body>
+    <div id="content">
+        <!-- if 语句 -->
+        <script id="pagetmpl" type="text/html">
+            <!-- {{ if(typeof(it.webSource) != "undefined"){ }}
+						{{ for(var i in it.webSource){ }}
+								<h2>{{ it.webSource[i].sourceName}}</h2>
+							{{ for(var j in it.webSource[i].sonSource){ }}
+								<h4>{{ it.webSource[i].sonSource[j].sName}}</h4>
+							{{ } }}
+						{{ } }}
+
+				{{ } }} -->
+            {{ it.message}}
+        </script>
+    </div>
+    <div>nihao
+    </div>
+    <script src="template.js" type="text/javascript"></script>
+    <script src="template-native.js" type="text/javascript"></script>
+    <script src="./json.js" type="text/javascript"></script>
+    <script src="../jQuery/jquery-2.0.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    //console.log("def");
+
+
+
+    console.log(privilege);
+
+    /*console.log($('#pagetmpl').html());
+    		console.log(document.getElementById('pagetmpl').text);
+    		console.log($('#content').html());
+    		console.log(document.getElementById('content').innerHTML);
+    */
+
+    /*var pagefn = doT.template($('#pagetmpl').html(), undefined, null);
+    document.getElementById('content').innerHTML = pagefn(data);*/
+    $('#content').html(template('#pagetmpl', {it: privilege}));
+    </script>
+</body>
+
+</html>

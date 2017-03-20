@@ -1,0 +1,13 @@
+winscppwd
+=========
+
+winscppwd is a simple commmand line tool to recover WinSCP stored passwords.
+
+A compiled version for Windows is available on bitbucket at:
+
+ https://bitbucket.org/knarf/winscppwd/downloads/winscppwd.exe
+
+Usage
+=====
+
+    $ ./winscppwd [user host pwd|path/to/winscp.ini]

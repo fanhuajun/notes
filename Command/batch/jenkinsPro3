@@ -1,0 +1,5 @@
+@echo off
+del /s /q /f  %cd%
+xcopy /s/i/y D:\03EBA\source\SAAS\system\vanrui-user\*  %cd%
+cd vanrui-user-app/
+mvn clean package -P dev -U -Dmaven.test.skip=true

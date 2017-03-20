@@ -1,0 +1,13 @@
+echo "restart vanrui-partner-app"
+#替换源码
+cd /data/app-6011-partner/
+rm -rf conf
+rm -rf bin
+rm -rf lib
+unzip vanrui-partner-app*
+cp -r /data/app-6011-partner/vanrui-partner-app-2.1.0-*/*  /data/app-6011-partner/
+rm -rf /data/app-6011-partner/vanrui-partner-app-2.1.0-*
+
+#重启
+cd /data/script/
+./app-6009-order restart

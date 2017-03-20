@@ -1,0 +1,4 @@
+echo "web log"
+cd /
+cd log/web/vanrui-man-web/
+tail -f vanrui-man-web.log
