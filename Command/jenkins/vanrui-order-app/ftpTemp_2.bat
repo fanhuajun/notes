@@ -1,9 +1,11 @@
 rem ftp 操作start
 
-set FTP_DIR="D:/ftp1.txt"
-set SOURCE_FILE_DIR="C:/Users/fanhuajun/.jenkins/workspace/Pro3/vanrui-user-app/target/vanrui*.zip"
+rem 需要修改的变量
 set DESTINATION_DIR="/data/fan"
 
+rem 不需要修改的变量
+set SOURCE_FILE_DIR="%cd%/target/*.zip"
+set FTP_DIR="D:/ftp1.txt"
 @Echo Off
 Echo open 10.1.251.16 21>%FTP_DIR%
 Echo root>>%FTP_DIR%
