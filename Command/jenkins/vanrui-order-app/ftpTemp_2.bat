@@ -1,7 +1,7 @@
 rem ftp 操作start
 
 rem 需要修改的变量
-set DESTINATION_DIR="/data/fan"
+set DESTINATION_DIR="/data/app-6009-order"
 
 rem 不需要修改的变量
 set SOURCE_FILE_DIR="%cd%/target/*.zip"

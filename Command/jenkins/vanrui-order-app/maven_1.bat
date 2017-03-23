@@ -1,5 +1,5 @@
 rem 需要修改的变量
-set SOURCE_FILE="D:\03EBA\source\SAAS\system\vanrui-user\vanrui-user-app"
+set SOURCE_FILE="D:\03EBA\source\SAAS\system\vanrui-order\vanrui-order-app"
 
 @echo off
 xcopy /s/i/y %SOURCE_FILE%\*  %cd%
