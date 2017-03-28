@@ -1,7 +1,7 @@
 #!/bin/bash
 #解压后的名称
-pro="vanrui-order-app"
-pro_dir="/data/app-6009-order"
+pro="vanrui-man-web"
+pro_dir="/data/web-8087-man"
 
 cd $pro_dir/
 unzip *.zip
