@@ -1,0 +1,13 @@
+行 21: 控件 Winsock1 的类 MSWinsockLib.Winsock 不是一个已加载的控件类。
+行 67: 控件 MSComm1 的类 MSCommLib.MSComm 不是一个已加载的控件类。
+行 137: 控件 TCPA 的类 MSWinsockLib.Winsock 不是一个已加载的控件类。
+行 24: 属性名 _ExtentX 在 Winsock1 中是无效的。
+行 25: 属性名 _ExtentY 在 Winsock1 中是无效的。
+行 26: 属性名 _Version 在 Winsock1 中是无效的。
+行 70: 属性名 _ExtentX 在 MSComm1 中是无效的。
+行 71: 属性名 _ExtentY 在 MSComm1 中是无效的。
+行 72: 属性名 _Version 在 MSComm1 中是无效的。
+行 73: 属性名 DTREnable 在 MSComm1 中是无效的。
+行 140: 属性名 _ExtentX 在 TCPA 中是无效的。
+行 141: 属性名 _ExtentY 在 TCPA 中是无效的。
+行 142: 属性名 _Version 在 TCPA 中是无效的。
