@@ -8,12 +8,12 @@ Begin VB.Form Form1
    LinkTopic       =   "Form1"
    ScaleHeight     =   3030
    ScaleWidth      =   4560
-   StartUpPosition =   3  '����ȱʡ
+   StartUpPosition =   3  '´°¿ÚÈ±Ê¡
    Begin VB.TextBox Text1 
       Height          =   375
       Left            =   600
       TabIndex        =   1
-      Text            =   "Text1"
+      Text            =   "Text2"
       Top             =   240
       Width           =   855
    End
@@ -31,10 +31,22 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
+Dim strkaoqin(100) As String
+
 Private Sub Command1_Click()
+    Dim strTxt As String
+    Dim longTxt As String
 
-End Sub
+    strkaoqin(0) = "{" + "'no'"+":" & cntkaoqin + "}"
+    
+    strkaoqin(0) = "nihao  "
+    strkaoqin(1) = "nihao2  "
+    strTxt = strTxt & strkaoqin(0)
+    strTxt = strTxt & strkaoqin(2)
 
-Private Sub Text1_Change()
 
+    Open "C://test.txt" For Output As #8
+    Print #8, strTxt
+    Close #8
 End Sub

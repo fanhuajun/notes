@@ -307,32 +307,32 @@ End Sub
 
 
 
-
-Private Sub Command2_Click()
-  Dim i As Long
-    Dim j As Long
-    Dim objExl As Excel.Application   '声明对象变量
-    Me.MousePointer = 11            '改变鼠标样式
-    Set objExl = New Excel.Application    '初始化对象变量
-    objExl.SheetsInNewWorkbook = 1  '将新建的工作薄数量设为1
-    objExl.Workbooks.Add          '增加一个工作薄
-    objExl.Sheets(objExl.Sheets.Count).Name = "book1"  '修改工作薄名称
-    objExl.Sheets.Add , objExl.Sheets("book1") '增加第二个工作薄在第一个之后
-    objExl.Sheets(objExl.Sheets.Count).Name = "book2"
-    objExl.Sheets.Add , objExl.Sheets("book2") '增加第三个工作薄在第二个之后
-    objExl.Sheets(objExl.Sheets.Count).Name = "book3"
-    objExl.Sheets("book1").Select     '选中工作薄<book1>
-    For i = 1 To 50                   '循环写入数据
-        For j = 1 To 5
-            If i = 1 Then
-                objExl.Selection.NumberFormatLocal = "@"  '设置格式为文本
-                objExl.Cells(i, j) = " E " & i & j
-            Else
-                objExl.Cells(i, j) = i & j
-            End If
-        Next
-    Next
-End Sub
+'
+'Private Sub Command2_Click()
+'  Dim i As Long
+'    Dim j As Long
+'    Dim objExl As Excel.Application   '声明对象变量
+'    Me.MousePointer = 11            '改变鼠标样式
+'    Set objExl = New Excel.Application    '初始化对象变量
+'    objExl.SheetsInNewWorkbook = 1  '将新建的工作薄数量设为1
+'    objExl.Workbooks.Add          '增加一个工作薄
+'    objExl.Sheets(objExl.Sheets.Count).Name = "book1"  '修改工作薄名称
+'    objExl.Sheets.Add , objExl.Sheets("book1") '增加第二个工作薄在第一个之后
+'    objExl.Sheets(objExl.Sheets.Count).Name = "book2"
+'    objExl.Sheets.Add , objExl.Sheets("book2") '增加第三个工作薄在第二个之后
+'    objExl.Sheets(objExl.Sheets.Count).Name = "book3"
+'    objExl.Sheets("book1").Select     '选中工作薄<book1>
+'    For i = 1 To 50                   '循环写入数据
+'        For j = 1 To 5
+'            If i = 1 Then
+'                objExl.Selection.NumberFormatLocal = "@"  '设置格式为文本
+'                objExl.Cells(i, j) = " E " & i & j
+'            Else
+'                objExl.Cells(i, j) = i & j
+'            End If
+'        Next
+'    Next
+'End Sub
 
 Private Sub DelKey_Click() '删除键
 
@@ -548,6 +548,8 @@ End Sub
 
 'TCP客户端连接请求
 Private Sub TCPA_ConnectionRequest(ByVal requestID As Long)
+    Dim strTxt As String
+
     If TCPA.State <> sckClosed Then '强制关闭当前TCP,重新连接新的请求
         TCPA.Close
     End If
@@ -556,12 +558,22 @@ Private Sub TCPA_ConnectionRequest(ByVal requestID As Long)
         TCPA.SendData "暂时无车辆出入信息"
     Else
         TCPA.SendData "今日车辆出入信息如下------>"
-        For i = 0 To 100
+        strTxt = "["
+        For i = 0 To cntkaoqin -1
             TCPA.SendData strkaoqin(i)
+            strTxt=strTxt & strkaoqin(i) & "," & vbCrLf
         Next
+
+        strTxt = strTxt+"]"
+        Open "C://test.txt" For Output As #8
+        Print #8, strTxt
+        Close #8
     End If
 
 End Sub
+
+
+
 Private Sub Timer2_Timer()
     Timer2.Enabled = False
     TCPA.Protocol = sckTCPAProtocol '采用TCPA协议
@@ -703,7 +715,7 @@ Public Function Uart_Deal()
             strtime = Str(Hour(Now)) + ":" + Str(Minute(Now))
             '显示签到信息
             Text1 = Text1 & strtime & "  " & strname & vbCrLf
-            strkaoqin(cntkaoqin) = strtime & "  " & strname & "     "
+            strkaoqin(cntkaoqin) = "{" & "\'time\'" & ":" & "\'" & strtime & "\'" & "," & "\'name\'" & ":" & "\'" & strname & "\'" & "}" 
             cntkaoqin = cntkaoqin + 1
             If TCPA.State = sckConnected Then
                 TCPA.SendData strtime & " " & strname & "签到" & vbCrLf
