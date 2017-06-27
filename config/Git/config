@@ -15,5 +15,5 @@
 [gui]
 	wmstate = normal
 	geometry = 835x475+26+26 185 214
-[credential]    
+[credential]
     helper = store --file .git-credentials
