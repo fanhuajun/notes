@@ -57,7 +57,7 @@ ORDER BY is_current_org DESC ,ORDER_HOUR ASC
 
 
 ##################################
-#删除维保工单
+# 删除维保工单
 ##################################
 SELECT MAINTENANCE_ID FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%";
 select ID from maintenance_event WHERE ORDER_ID IN(
@@ -67,24 +67,24 @@ select count(*) FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%";
 
 
 
-#删除附件表
+#1 删除附件表
 DELETE FROM maintenance_event_attachment where id in(
 	select ID from maintenance_event WHERE ORDER_ID IN(
 		SELECT MAINTENANCE_ID FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%"));
-#删除事件记录表
+#2 删除事件记录表
 DELETE FROM maintenance_event_log where event_id id in(
 	select ID from maintenance_event WHERE ORDER_ID IN(
 		SELECT MAINTENANCE_ID FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%"));
-#删除事件表
+#3 删除事件表
 DELETE FROM maintenance_event WHERE ORDER_ID IN(
 	SELECT MAINTENANCE_ID FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%");
-#删除步骤表
+#4 删除步骤表
 DELETE FROM maintenance_step WHERE MAINTENANCE_ID NOT IN(
 	SELECT MAINTENANCE_ID FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%");
-#删除工单表
+#5 删除工单表
 DELETE FROM maintenance_work_order WHERE MAINTENANCE_ID IN(
 	SELECT MAINTENANCE_ID FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%");
-#删除信息表
+#6 删除信息表
 DELETE FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%";
 
 #############################################
@@ -108,31 +108,52 @@ DELETE FROM `eba_work`.`maintenance_info`;
 DELETE FROM `eba_work`.maintenance_event;
 DELETE FROM `eba_work`.maintenance_
 
-#工单
-SELECT * FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020;
+select ID from maintenance_event WHERE ORDER_ID IN(
+		SELECT MAINTENANCE_ID FROM maintenance_info WHERE FM_ORDER_ID LIKE "%TEST%")
 
-#信息
-SELECT * FROM `eba_work_test`.`maintenance_info` WHERE MAINTENANCE_ID IN(
-SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020
-);
-#事件
-SELECT * FROM eba_work_test.maintenance_event WHERE ORDER_ID IN(
-SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020
-);
-#步骤
-SELECT * FROM `eba_work_test`.`maintenance_step` WHERE MAINTENANCE_ID IN(
-SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020
-);
 
-INSERT INTO `eba_work`.maintenance_work_order(SELECT * FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020);
-INSERT INTO `eba_work`.`maintenance_info`(SELECT * FROM `eba_work_test`.`maintenance_info` WHERE MAINTENANCE_ID IN(
-SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020
+#1 迁入工单
+INSERT INTO `eba_work`.maintenance_work_order(
+	SELECT * FROM `eba_work_test`.`maintenance_work_order`);
+#2 迁入工单信息
+INSERT INTO `eba_work`.`maintenance_info`(
+	SELECT * FROM `eba_work_test`.`maintenance_info` WHERE MAINTENANCE_ID IN(
+		SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order`
 ));
-INSERT INTO `eba_work`.maintenance_event(SELECT * FROM eba_work_test.maintenance_event WHERE ORDER_ID IN(
-SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020
+#3 迁入事件
+INSERT INTO `eba_work`.maintenance_event(
+	SELECT * FROM eba_work_test.maintenance_event WHERE ORDER_ID IN(
+		SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order`
 ));
+#4 迁入事件日志
+INSERT INTO `eba_work`.maintenance_event_log(
+	SELECT * FROM eba_work_test.maintenance_event_log WHERE event_id IN(
+		SELECT id FROM eba_work_test.maintenance_event WHERE ORDER_ID IN(
+			SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order`
+)));
+#5 迁入步骤
+INSERT INTO `eba_work`.`maintenance_step`(
+	SELECT * FROM `eba_work_test`.`maintenance_step` WHERE MAINTENANCE_ID IN(
+		SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order`
+));
+#6 迁入附件
+INSERT INTO `eba_work`.maintenance_event_attachment(
+	SELECT * FROM eba_work_test.maintenance_event_attachment WHERE id IN(
+		SELECT id FROM eba_work_test.maintenance_event WHERE ORDER_ID IN(
+			SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order`
+)));
 
-INSERT INTO `eba_work`.`maintenance_step`(SELECT * FROM `eba_work_test`.`maintenance_step` WHERE MAINTENANCE_ID IN(
-SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_work_order` WHERE SUB_STATUS =1020
-));
+
+#############################
+#迁移缺失步骤
+#############################
+
+INSERT INTO `eba_work`.`maintenance_step`(
+	select * from eba_work_test.maintenance_step testStep 
+	where testStep.MAINTENANCE_ID in(
+		SELECT MAINTENANCE_ID FROM `eba_work_test`.`maintenance_step` WHERE MAINTENANCE_ID IN(
+			SELECT MAINTENANCE_ID FROM `eba_work`.`maintenance_work_order`
+	    ))
+	and testStep.MAINTENANCE_ID not in(select MAINTENANCE_ID from eba_work.maintenance_step)
+);
 
