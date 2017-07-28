@@ -1,0 +1,1 @@
+schtasks /create /tn "name" /tr "cmd /c d:\1.bat" /sc daily /st 04:00
