@@ -23,7 +23,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <longProp name="ThreadGroup.start_time">1505118996000</longProp>
         <longProp name="ThreadGroup.end_time">1505118996000</longProp>
@@ -47,7 +47,7 @@
           <stringProp name="mqtt.clientcert_password"></stringProp>
           <stringProp name="mqtt.port">1883</stringProp>
           <stringProp name="mqtt.protocol">TCP</stringProp>
-          <stringProp name="mqtt.server">10.0.76.32</stringProp>
+          <stringProp name="mqtt.server">eba.vankeservice.com</stringProp>
           <stringProp name="mqtt.user_name"></stringProp>
           <stringProp name="mqtt.password"></stringProp>
           <stringProp name="mqtt.topic_name">pub/InTimeData</stringProp>
@@ -57,6 +57,32 @@
           <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
           <stringProp name="mqtt.message_to_sent">{&quot;company&quot;:&quot;company&quot;,&quot;data&quot;:&quot;{\&quot;devid\&quot;:\&quot;00:53:4a:06:70:55\&quot;,\&quot;list\&quot;:[{\&quot;originval\&quot;:\&quot;26.6\&quot;,\&quot;picktime\&quot;:\&quot;2017-09-11 17:30:3040\&quot;,\&quot;signalid\&quot;:\&quot;118201001\&quot;,\&quot;signalval\&quot;:\&quot;26.6\&quot;,\&quot;unit\&quot;:\&quot;\&quot;},{\&quot;originval\&quot;:\&quot;0\&quot;,\&quot;picktime\&quot;:\&quot;2017-09-07 12:09:0937\&quot;,\&quot;signalid\&quot;:\&quot;118202001\&quot;,\&quot;signalval\&quot;:\&quot;0\&quot;,\&quot;unit\&quot;:\&quot;\&quot;},{\&quot;originval\&quot;:\&quot;0\&quot;,\&quot;picktime\&quot;:\&quot;2017-09-07 12:09:0946\&quot;,\&quot;signalid\&quot;:\&quot;118203001\&quot;,\&quot;signalval\&quot;:\&quot;0\&quot;,\&quot;unit\&quot;:\&quot;\&quot;},{\&quot;originval\&quot;:\&quot;89.8\&quot;,\&quot;picktime\&quot;:\&quot;2017-09-11 17:30:3040\&quot;,\&quot;signalid\&quot;:\&quot;118204001\&quot;,\&quot;signalval\&quot;:\&quot;89.8\&quot;,\&quot;unit\&quot;:\&quot;\&quot;},{\&quot;originval\&quot;:\&quot;0\&quot;,\&quot;picktime\&quot;:\&quot;2017-09-07 12:10:1007\&quot;,\&quot;signalid\&quot;:\&quot;118205001\&quot;,\&quot;signalval\&quot;:\&quot;0\&quot;,\&quot;unit\&quot;:\&quot;\&quot;},{\&quot;originval\&quot;:\&quot;0\&quot;,\&quot;picktime\&quot;:\&quot;2017-09-11 12:24:2447\&quot;,\&quot;signalid\&quot;:\&quot;118206001\&quot;,\&quot;signalval\&quot;:\&quot;0\&quot;,\&quot;unit\&quot;:\&quot;\&quot;}]}&quot;,&quot;message&quot;:&quot;shujushagnbao&quot;,&quot;reportTime&quot;:&quot;2017-09-11 17:30:40&quot;}</stringProp>
         </net.xmeter.samplers.PubSampler>
+        <hashTree/>
+        <net.xmeter.samplers.SubSampler guiclass="net.xmeter.gui.SubSamplerUI" testclass="net.xmeter.samplers.SubSampler" testname="MQTT Sub Sampler" enabled="true">
+          <stringProp name="mqtt.keystore_file_path"></stringProp>
+          <stringProp name="mqtt.clientcert_file_path"></stringProp>
+          <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+          <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.keep_time">1800</stringProp>
+          <stringProp name="mqtt.client_id_prefix">sub_</stringProp>
+          <boolProp name="mqtt.client_id_suffix">true</boolProp>
+          <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+          <stringProp name="mqtt.keystore_password"></stringProp>
+          <stringProp name="mqtt.clientcert_password"></stringProp>
+          <stringProp name="mqtt.port">1883</stringProp>
+          <stringProp name="mqtt.protocol">TCP</stringProp>
+          <stringProp name="mqtt.server">127.0.0.1</stringProp>
+          <stringProp name="mqtt.user_name"></stringProp>
+          <stringProp name="mqtt.password"></stringProp>
+          <stringProp name="mqtt.topic_name">test_topic</stringProp>
+          <stringProp name="mqtt.qos_level">0</stringProp>
+          <boolProp name="mqtt.add_timestamp">false</boolProp>
+          <boolProp name="mqtt.debug_response">false</boolProp>
+          <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
+          <stringProp name="mqtt.sample_condition_value">1000</stringProp>
+        </net.xmeter.samplers.SubSampler>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
