@@ -7,3 +7,5 @@ kill  -9   33889
 cd /data/
 ./script/tomcat-8087-man restart
 ./script/tomcat-8087-man restart
+
+
