@@ -21,10 +21,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">8</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">300</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">4</stringProp>
+        <stringProp name="ThreadGroup.num_threads">200</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">2</stringProp>
         <longProp name="ThreadGroup.start_time">1505118996000</longProp>
         <longProp name="ThreadGroup.end_time">1505118996000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -47,7 +47,7 @@
           <stringProp name="mqtt.clientcert_password"></stringProp>
           <stringProp name="mqtt.port">1883</stringProp>
           <stringProp name="mqtt.protocol">TCP</stringProp>
-          <stringProp name="mqtt.server">eba.vankeservice.com</stringProp>
+          <stringProp name="mqtt.server">10.0.76.32</stringProp>
           <stringProp name="mqtt.user_name"></stringProp>
           <stringProp name="mqtt.password"></stringProp>
           <stringProp name="mqtt.topic_name">pub/InTimeData</stringProp>
