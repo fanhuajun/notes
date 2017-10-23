@@ -15,5 +15,5 @@ com.zaxxer.hikari.pool.HikariPool - bravo-HikariCP - Pool stats (total=10, activ
 
 
 接下来的要求 预计 2500 个项目，  50 倍于当前
-现在可以支持的并发量为 1600
+现在可以支持的并发量为 160
 -- 无压力
