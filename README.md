@@ -8,6 +8,8 @@
 1. 安装 ConvertToUTF8
 2. 安装 GBK Support
 
+> 二、json 格式化
+- 安装 Pretty JSON  ctrl+alt+j  快捷键
 
 ## tomcat 常见问题
 > 启动慢  添加参数
