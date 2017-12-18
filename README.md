@@ -5,7 +5,7 @@
 
 
 ## sublime text 3  常见问题
-
+![](https://github.com/fanhuajun/notes/blob/master/img/sublime.jpg)
 > 一. 中文乱码
 - install package
 1. 安装 ConvertToUTF8
