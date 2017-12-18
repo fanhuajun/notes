@@ -20,5 +20,5 @@
 > 启动慢  添加参数
 - JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
-## [Linux 服务器配置 链接](https://github.com/fanhuajun/java-demo) ##
+## [Linux 服务器配置 链接](https://github.com/fanhuajun/initServer) ##
 ![](https://github.com/fanhuajun/notes/blob/master/img/timg.jpg)
