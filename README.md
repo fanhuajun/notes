@@ -21,4 +21,4 @@
 - JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
 ## [Linux 服务器配置 链接](https://github.com/fanhuajun/java-demo) ##
-![]()
+![](https://github.com/fanhuajun/notes/blob/master/img/timg.jpg)
