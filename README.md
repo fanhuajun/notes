@@ -17,7 +17,7 @@
   ctrl+alt+j  快捷键
 
 ## tomcat 常见问题
-<img src="https://github.com/fanhuajun/notes/blob/master/img/tomcat.jpg" width="78" height="auto">
+<img src="https://github.com/fanhuajun/notes/blob/master/img/Tomcat.jpg" width="78" height="auto">
 > 启动慢  添加参数
 - JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
