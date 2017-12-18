@@ -6,7 +6,9 @@
 
 ## sublime text 3  常见问题
 <img src="https://github.com/fanhuajun/notes/blob/master/img/sublime.jpg" width="78" height="auto">
+
 > 一. 中文乱码
+
 - install package
 1. 安装 ConvertToUTF8
 2. 安装 GBK Support
@@ -18,6 +20,7 @@
 
 ## tomcat 常见问题
 <img src="https://github.com/fanhuajun/notes/blob/master/img/Tomcat.jpg" width="78" height="auto">
+
 > 启动慢  添加参数
 - JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
