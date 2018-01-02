@@ -29,6 +29,11 @@ JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 ```
 
 ## [Linux 服务器配置 链接](https://github.com/fanhuajun/initServer) ##
-<img src="https://github.com/fanhuajun/notes/blob/master/img/timg.jpg" width="78" height="auto">
+<img src="https://github.com/fanhuajun/notes/blob/master/img/linux.jpg" width="78" height="auto">
 
+| 1、乱码问题
 
+``` ruby
+LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+```
