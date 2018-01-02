@@ -14,6 +14,7 @@
 2. 安装 GBK Support
 
 > 二、json 格式化
+
 - 安装 Pretty JSON  
   
   ctrl+alt+j  快捷键
@@ -29,3 +30,5 @@ JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
 ## [Linux 服务器配置 链接](https://github.com/fanhuajun/initServer) ##
 <img src="https://github.com/fanhuajun/notes/blob/master/img/timg.jpg" width="78" height="auto">
+
+
