@@ -18,7 +18,7 @@
 - 安装 Pretty JSON  
   
   ctrl+alt+j  快捷键
-
+  
 ## tomcat 常见问题
 <img src="https://github.com/fanhuajun/notes/blob/master/img/Tomcat.jpg" width="78" height="auto">
 
@@ -35,7 +35,7 @@ JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
 ```shell
 cat > /etc/locale.conf << END
-LANG=zh_CN.UTF-8
+LANG=en_US.UTF-8
 export LC_ALL=zh_CN.UTF-8
 END
 
