@@ -41,3 +41,9 @@ END
 
 source /etc/locale.conf
 ```
+
+## Excel
+
+```sql
+=CONCATENATE("insert into users (name,sex,age) values ('",A1,"','",B1,"','",C1,"');")
+```
