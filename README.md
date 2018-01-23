@@ -43,7 +43,7 @@ source /etc/locale.conf
 ```
 
 ## Excel
-<img src="https://github.com/fanhuajun/notes/blob/master/img/Excel.jpg.jpg" width="78" height="auto">
+<img src="https://github.com/fanhuajun/notes/blob/master/img/Excel.jpg" width="78" height="auto">
 
 ```sql
 =CONCATENATE("insert into users (name,sex,age) values ('",A1,"','",B1,"','",C1,"');")
