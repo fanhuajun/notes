@@ -14,8 +14,8 @@ CREATE
     | COMMENT 'string'*/
     BEGIN
       DECLARE i INT DEFAULT 1;
-        while i < 11 do  # 循环体 
-        #insert into user_profile (uid) values (i); 
+        while i < 3 do  # 循环体 
+        select * from tbl_eba_signal_health;
         set i = i +1;
         end while;
 	    select i;
