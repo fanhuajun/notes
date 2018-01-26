@@ -1,5 +1,6 @@
 
 ```sql
+
 DROP PROCEDURE IF EXISTS `digtalservice`.`23`; # 删除 已有的 存储过程 
 DELIMITER $$
 
@@ -13,11 +14,15 @@ CREATE
     | COMMENT 'string'*/
     BEGIN
       DECLARE i INT DEFAULT 1;
-	  set i = i +1;
-	  SELECT i;
+        while i < 11 do  # 循环体 
+        #insert into user_profile (uid) values (i); 
+        set i = i +1;
+        end while;
+	    select i;
     END$$
 
 DELIMITER ;
 
 CALL `digtalservice`.`23`();
+
  ```
