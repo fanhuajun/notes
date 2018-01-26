@@ -4,7 +4,7 @@
 ```sql
 
 DROP PROCEDURE IF EXISTS `digtalservice`.`23`; # 删除 已有的 存储过程 
-DELIMITER $$
+DELIMITER $$  # 定义结束符为 $$
 
 CREATE
     /*[DEFINER = { user | CURRENT_USER }]*/
