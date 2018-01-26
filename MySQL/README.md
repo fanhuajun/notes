@@ -1,5 +1,6 @@
 ## mysql 储存过程 
 
+- 循环语句
 ```sql
 
 DROP PROCEDURE IF EXISTS `digtalservice`.`23`; # 删除 已有的 存储过程 
