@@ -1,18 +1,23 @@
 
 ```sql
--- 实例：
- CREATE PROCEDURE sum1(a INT) 
- BEGIN
-     DECLARE SUM INT DEFAULT 0;  -- default 是指定该变量的默认值
-     DECLARE i INT DEFAULT 1;
- WHILE i<=a DO -- 循环开始
-     SET SUM=SUM+i;
-     SET i=i+1;
- END WHILE; -- 循环结束
- SELECT SUM;  -- 输出结果
- END
- -- 执行存储过程
- CALL sum1(100);
- -- 删除存储过程
- DROP PROCEDURE IF EXISTS sum1
+DROP PROCEDURE IF EXISTS `digtalservice`.`23`; # 删除 已有的 存储过程 
+DELIMITER $$
+
+CREATE
+    /*[DEFINER = { user | CURRENT_USER }]*/
+    PROCEDURE `digtalservice`.`23`()
+    /*LANGUAGE SQL
+    | [NOT] DETERMINISTIC
+    | { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA }
+    | SQL SECURITY { DEFINER | INVOKER }
+    | COMMENT 'string'*/
+    BEGIN
+      DECLARE i INT DEFAULT 1;
+	  set i = i +1;
+	  SELECT i;
+    END$$
+
+DELIMITER ;
+
+CALL `digtalservice`.`23`();
  ```
