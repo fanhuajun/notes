@@ -48,3 +48,6 @@ source /etc/locale.conf
 ```sql
 =CONCATENATE("insert into users (name,sex,age) values ('",A1,"','",B1,"','",C1,"');")
 ```
+
+## MySQL [链接](https://github.com/fanhuajun/notes/tree/master/MySQL)
+<img src="https://github.com/fanhuajun/notes/blob/master/img/mysql.jpg" width="78" height="auto">
