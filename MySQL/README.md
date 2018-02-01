@@ -33,7 +33,7 @@ CALL `digtalservice`.`23`();
  ```sql
  1.去重 distinct select distinct name from table1;
   ```
-SQL语句执行顺序[http://www.cnblogs.com/Qian123/p/5669259.html](http://www.cnblogs.com/Qian123/p/5669259.html)
+SQL语句执行顺序 [http://www.cnblogs.com/Qian123/p/5669259.html](http://www.cnblogs.com/Qian123/p/5669259.html)
 ```sql
 1、FROM：对FROM子句中的前两个表执行笛卡尔积（Cartesian product)(交叉联接），生成虚拟表VT1  <b\>
 2、ON：对VT1应用ON筛选器。只有那些使<join_condition>为真的行才被插入VT2。 <b\>
