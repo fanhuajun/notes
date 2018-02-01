@@ -32,8 +32,9 @@ CALL `digtalservice`.`23`();
  - 常用语句
  ```sql
  1.去重 distinct select distinct name from table1;
-SQL语句执行顺序
-[http://www.cnblogs.com/Qian123/p/5669259.html](http://www.cnblogs.com/Qian123/p/5669259.html)
+  ```
+SQL语句执行顺序[http://www.cnblogs.com/Qian123/p/5669259.html](http://www.cnblogs.com/Qian123/p/5669259.html)
+```sql
 1、FROM：对FROM子句中的前两个表执行笛卡尔积（Cartesian product)(交叉联接），生成虚拟表VT1  <b\>
 2、ON：对VT1应用ON筛选器。只有那些使<join_condition>为真的行才被插入VT2。 <b\>
 3、OUTER(JOIN)：如 果指定了OUTER JOIN（相对于CROSS JOIN 或(INNER JOIN),保留表（preserved table：左外部联接把左表标记为保留表，右外部联接把右表标记为保留表，完全外部联接把两个表都标记为保留表）中未找到匹配的行将作为外部行添加到 VT2,生成VT3.如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到处理完所有的表为止。
