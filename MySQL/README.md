@@ -47,3 +47,50 @@ SQL语句执行顺序 [http://www.cnblogs.com/Qian123/p/5669259.html](http://www
 10、ORDER BY：将VT9中的行按ORDER BY 子句中的列列表排序，生成游标（VC10).
 11、TOP：从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回调用者。1
  ```
+
+
+ ## mysql 安装
+- 一
+```shell
+yum install mysql
+yum install mysql-server
+yum install mysql-devel
+chgrp -R mysql /var/lib/mysql
+chmod -R 770 /var/lib/mysql
+service mysqld start 
+mysql
+grep 'temporary password' /var/log/mysqld.log
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');
+```
+
+- 二  
+- https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/
+```shell
+wget https://repo.mysql.com//mysql57-community-release-el6-11.noarch.rpm
+rpm -Uvh mysql57-community-release-el6-11.noarch.rpm
+yum repolist all | grep mysql
+yum repolist enabled | grep mysql
+yum install mysql-community-server
+service mysqld start
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Fhj(252019)');
+```
+
+## mysql 权限
+> use mysql;
+> update user set host = '%' where user ='root';
+> flush privileges;
+
+## 改变mysql 数据存储路径
+- 需改 etc/my.cnf 配置文件
+
+```shell
+mkdir /mnt/home/mysql
+chgrp -R mysql /mnt/home/mysql
+chmod -R 770 /mnt/home/mysql
+service mysqld start
+```
+- 如果要reboot自启动：
+
+```shell
+chkconfig --levels 345 mysqld on
+```
