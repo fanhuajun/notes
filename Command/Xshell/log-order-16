@@ -1,3 +1,0 @@
-echo "order log"
-cd /home/ebalog/app/vanrui-order-app/
-tail -f vanrui-order-app.log

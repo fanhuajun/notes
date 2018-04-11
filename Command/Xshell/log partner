@@ -1,3 +1,0 @@
-echo "partner log"
-cd /home/ebalog/app/vanrui-partner-app/
-tail -f vanrui-partner-app.log

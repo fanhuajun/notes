@@ -1,2 +1,0 @@
-cd /home/ebalog/app/vanrui-warn-app/
-tail -f vanrui-warn-app.log

@@ -1,0 +1,3 @@
+echo "web log"
+cd /home/ebalog/web/vanrui-man-web/
+tail -f vanrui-man-web.log

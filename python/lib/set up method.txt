@@ -1,5 +1,0 @@
-配置python环境
-测试环境  cmd -- 
-例如安装  splinter
-1，打开cmd  
-2，输入 easy_install splinter

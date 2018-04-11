@@ -1,0 +1,19 @@
+         http://jingyan.baidu.com/article/a65957f4e91ccf24e77f9b11.html
+
+检查本机是否有ssh key设置
+$ cd ~/.ssh
+
+$ ssh-keygen -t rsa -C "xxxxxx@yy.com"  #建议填写自己真实有效的邮箱地址
+
+
+3.1 登录GitHub系统；点击右上角账号头像的Settings→SSH kyes→Add SSH key。
+
+进入c:/Users/xxxx_000/.ssh/目录下，打开id_rsa.pub文件，全选复制公钥内容。
+
+$ git config --global user.name “your_username”  #设置用户名
+$ git config --global user.email “your_registered_github_Email”  #设置邮箱地址(建议用注册giuhub的邮箱)
+
+测试ssh keys是否设置成功。
+$ ssh -T git@github.com
+
+Hi xxx! You've successfully authenticated, but GitHub does not provide shell access. #出现词句话，说明设置成功。

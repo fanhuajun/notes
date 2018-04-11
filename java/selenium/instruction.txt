@@ -1,3 +1,0 @@
-cmd 切换到当前路径
-
-执行 Java - jar selenium-server-standalone-2.53.0.jar

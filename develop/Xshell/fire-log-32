@@ -1,0 +1,2 @@
+cd /home/ebalog-fire/app/vanrui-firefighting-app
+tail -f vanrui-firefighting-app.log

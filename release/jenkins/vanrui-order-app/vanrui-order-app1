@@ -1,0 +1,37 @@
+#!/bin/bash
+############################################
+#构建中 batch操作
+############################################
+@echo off
+xcopy /s/i/y D:\03EBA\source\SAAS\system\vanrui-user\*  %cd%
+cd vanrui-user-app/
+#maven操作
+mvn clean package -P dev -U -Dmaven.test.skip=true
+
+#ftp 操作start
+@Echo Off
+Echo open 10.1.251.16 21>D:/ftp1.txt
+Echo root>>D:/ftp1.txt
+Echo Writ16@Pdwy>>D:/ftp1.txt
+Echo cd /data/fan >>D:/ftp1.txt
+Echo put C:/Users/fanhuajun/.jenkins/workspace/Pro3/vanrui-user-app/target/vanrui*.zip>>D:/ftp1.txt
+Echo bye>>D:/ftp1.txt
+@Echo on
+cd ..
+ftp -s:D:/ftp1.txt
+del D:\ftp1.txt /f
+Pause
+#ftp 操作end
+
+############################################
+#构建后 SSH操作
+############################################
+
+pro="vanrui-user-app"
+pro_dir="/data/fan"
+
+cd $pro_dir/$pro/target
+unzip *.zip
+cp -r $pro-*/*  $pro_dir
+rm -rf $pro_dir/vanrui*
+
