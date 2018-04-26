@@ -33,6 +33,8 @@ JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
 - 1、乱码问题
 
+- 2、[挂载](https://github.com/fanhuajun/notes/tree/master/develop)
+
 ```shell
 cat > /etc/locale.conf << END
 LANG=en_US.UTF-8
