@@ -6,3 +6,14 @@
 ## 抓包工具 Wireshark
 host 10.0.72.76
 port 80
+> fiddle
+
+## chrome 插件
+https://link.zhihu.com/?target=https%3A//chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc
+https://github.com/buunguyen/octotree
+
+## zkui
+> http://10.0.74.128:9090/login   --name:  admin  manager
+
+## jmc.exe
+
