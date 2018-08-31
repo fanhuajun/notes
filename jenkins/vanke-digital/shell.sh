@@ -48,7 +48,7 @@ IsActiveServer=`ps -ef | grep app-6008-bi | grep -v grep | wc -l | tail -n 1`
 if [ "$IsActiveServer" != "0" ]
 then
 	ps -ef | grep app-6008-bi | grep -v grep | awk '{print $2}' | 
-	while read LINE
+	wchile read LINE
 	do
 		if [ "$LINE" != "" ]
 		then

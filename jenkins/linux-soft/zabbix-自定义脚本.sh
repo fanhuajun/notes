@@ -7,19 +7,14 @@ chown zabbix.zabbix /etc/zabbix/bin
 echo init > /etc/zabbix/bin/tcp.sh
 
 cat > /etc/zabbix/bin/tcp.sh << EOF
-#!/bin/sh
-tcp_conn_status(){
-   echo 123
-}
-
-case $1 in
- tcp )
- tcp_conn_status;;
-  *)
-        echo "Usage: -bash {start|mosquitto|activemq}"
-            exit 1
-esac
-exit 0
+#!/bin/bash
+result=`ps -ef | grep zabbix | grep -v grep`
+if [ -n "$result" ]
+then
+        echo $result
+else
+        echo $result
+fi
 
 EOF
 
@@ -33,13 +28,13 @@ EOF
 
 
 cat << EOF >/etc/zabbix/zabbix_agentd.d/tcp_conns.conf
-UserParameter=tcp_status[*],/bin/bash /etc/zabbix/bin/tcp.sh $1
+UserParameter=tcp_status,/bin/bash /etc/zabbix/bin/tcp.sh
 EOF
 
-systemctl restart zabbix-agent
+systemctl restart zabbix-agentd
 # systemctl start zabbix-agent
 
 yum -y install zabbix-get.x86_64
-zabbix_get -s 127.0.0.1 -p 10050 -k "tcp_status[tcp]"
+zabbix_get -s 127.0.0.1 -p 10050 -k "tcp_status"
 
 # TCP_NUM=cat /proc/sys/kernel/threads-max
