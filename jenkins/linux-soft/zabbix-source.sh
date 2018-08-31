@@ -36,9 +36,9 @@ cat /root/zabbix-*/database/mysql/images.sql |mysql -uzabbix -p123456 -Dzabbix
 cat /root/zabbix-*/database/mysql/data.sql |mysql -uzabbix -p123456 -Dzabbix
 
 
-sed -i '/^#/d;/^$/d' /root/zabbix-*/conf/zabbix_server.conf
-sed -i '/DBHost\|DBName\|DBUser\|DBPassword/d' /root/zabbix-*/conf/zabbix_server.conf
-cat << EOF >>/root/zabbix-*/conf/zabbix_server.conf
+sed -i '/^#/d;/^$/d' /usr/local/zabbix/etc/zabbix_server.conf
+sed -i '/DBHost\|DBName\|DBUser\|DBPassword/d' /usr/local/zabbix/etc/zabbix_server.conf
+cat << EOF >>/usr/local/zabbix/etc/zabbix_server.conf
 DBHost=localhost
 DBName=zabbix
 DBUser=zabbix
@@ -77,19 +77,25 @@ systemctl enable httpd.service
 
 cat << EOF >/var/www/html/conf/zabbix.conf.php
 <?php
-// Zabbix GUI configuration file
-global $DB;
-$DB['TYPE']     = 'MYSQL';
-$DB['SERVER']   = 'localhost';
-$DB['PORT']     = '3306';
-$DB['DATABASE'] = 'zabbix';
-$DB['USER']     = 'zabbix';
-$DB['PASSWORD'] = '123456';
-// SCHEMA is relevant only for IBM_DB2 database
-$DB['SCHEMA'] = '';
-$ZBX_SERVER      = 'localhost';
-$ZBX_SERVER_PORT = '10051';
-$ZBX_SERVER_NAME = 'localhost';
-$IMAGE_FORMAT_DEFAULT = IMAGE_FORMAT_PNG;
-?>
+// Zabbix GUI configuration file.
+global $DB, $HISTORY;
+$DB['TYPE']                             = 'MYSQL';
+$DB['SERVER']                   = 'localhost';
+$DB['PORT']                             = '3306';
+$DB['DATABASE']                 = 'zabbix';
+$DB['USER']                             = 'zabbix';
+$DB['PASSWORD']                 = '123456';
+// Schema name. Used for IBM DB2 and PostgreSQL.
+$DB['SCHEMA']                   = '';
+$ZBX_SERVER                             = 'localhost';
+$ZBX_SERVER_PORT                = '10051';
+$ZBX_SERVER_NAME                = '';
+$IMAGE_FORMAT_DEFAULT   = IMAGE_FORMAT_PNG;
+// Elasticsearch url (can be string if same url is used for all types).
+$HISTORY['url']   = [
+                'uint' => 'http://localhost:9200',
+                'text' => 'http://localhost:9200'
+];
+// Value types stored in Elasticsearch.
+$HISTORY['types'] = ['uint', 'text'];
 EOF
