@@ -15,10 +15,11 @@ mysql -uroot -e" flush privileges ";
 
 # 二、安装/zabbix服务端
 # https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/3.4.13/zabbix-3.4.13.tar.gz
+cd /home
 wget https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/3.4.13/zabbix-3.4.13.tar.gz
 tar -zxvf zabbix-3.4.13.tar.gz
 yum -y install net-snmp-devel libxml2-devel libcurl-deve libevent libevent-devel libcurl
-yum -y install mysql-devel curl-devel libxml2-devel
+yum -y install mysql-devel curl-devel libxml2-devel pcre*
 
 cd zabbix-3.4.13/
 mkdir /usr/local/zabbix
@@ -31,9 +32,9 @@ mkdir -p /usr/local/zabbix/logs
 chown -R zabbix:zabbix /usr/local/zabbix
 
 make install
-cat /root/zabbix-*/database/mysql/schema.sql |mysql -uzabbix -p123456 -Dzabbix
-cat /root/zabbix-*/database/mysql/images.sql |mysql -uzabbix -p123456 -Dzabbix
-cat /root/zabbix-*/database/mysql/data.sql |mysql -uzabbix -p123456 -Dzabbix
+cat /home/zabbix-*/database/mysql/schema.sql |mysql -uzabbix -p123456 -Dzabbix
+cat /home/zabbix-*/database/mysql/images.sql |mysql -uzabbix -p123456 -Dzabbix
+cat /home/zabbix-*/database/mysql/data.sql |mysql -uzabbix -p123456 -Dzabbix
 
 
 sed -i '/^#/d;/^$/d' /usr/local/zabbix/etc/zabbix_server.conf
@@ -63,10 +64,15 @@ max_input_time=300
 date.timezone=Asia/Shanghai
 EOF
 
+cp -r /home/zabbix*/frontends/php/* /var/www/html
+cp /var/www/html/conf/zabbix.conf.php.example /var/www/html/conf/zabbix.conf.php
+# sed '/$HISTORY/,$d' /var/www/html/conf/zabbix.conf1.php
+sed -i '/HISTORY\[/,+5d' /var/www/html/conf/zabbix.conf.php
+sed -i '/PASSWORD/d' /var/www/html/conf/zabbix.conf.php
+cat << EOF >>/var/www/html/conf/zabbix.conf.php
+\$DB['PASSWORD']                 = '123456';
+EOF
 
-
-
-cp -r /root/zabbix*/frontends/php/* /var/www/html
 
 systemctl restart httpd.service
 systemctl enable httpd.service
@@ -75,21 +81,3 @@ systemctl enable httpd.service
 # http://47.92.171.176/zabbix/setup.php
 # 账号密码 Admin   zabbix
 
-cat << EOF >/var/www/html/conf/zabbix.conf.php
-<?php
-// Zabbix GUI configuration file.
-global $DB, $HISTORY;
-$DB['TYPE']                             = 'MYSQL';
-$DB['SERVER']                   = 'localhost';
-$DB['PORT']                             = '3306';
-$DB['DATABASE']                 = 'zabbix';
-$DB['USER']                             = 'zabbix';
-$DB['PASSWORD']                 = '123456';
-// Schema name. Used for IBM DB2 and PostgreSQL.
-$DB['SCHEMA']                   = '';
-
-$ZBX_SERVER                             = 'localhost';
-$ZBX_SERVER_PORT                = '10051';
-$ZBX_SERVER_NAME                = '';
-$IMAGE_FORMAT_DEFAULT   = IMAGE_FORMAT_PNG;
-EOF
