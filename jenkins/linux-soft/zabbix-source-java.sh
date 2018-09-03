@@ -1,4 +1,5 @@
 
+cd /home/zabbix-*
 ./configure --prefix=/usr/local/zabbix --enable-java
 make install
 
@@ -18,3 +19,6 @@ JavaGateway=127.0.0.1                     # JavaGateway 服务器地址，zabbix
 JavaGatewayPort=10052                    #端口
 StartJavaPollers=5
 EOF
+
+/usr/local/zabbix/sbin/zabbix_server
+

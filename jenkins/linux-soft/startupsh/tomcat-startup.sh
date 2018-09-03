@@ -30,7 +30,6 @@ CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 MAINCLASS=ooh/bravo/container/spring/Startup
 BASE_OPTS="-Dserver.home=$prog_dir -Dlogback.configurationFile=$prog_dir/conf/logback.xml -Djms.clientId=$prog_keyword"
 TLIB_OPTS="-Xbootclasspath/a:$prog_dir/lib/transmittable-thread-local-$ttl_version.jar -javaagent:$prog_dir/lib/transmittable-thread-local-$ttl_version.jar"
--javaagent:/home/rongwp/skywalking/agent/user/agent/skywalking-agent.jar
 JAVA_OPTS="$JAVA_OPTS -server -Xms256m -Xmx512m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -Xss256k"
 JAVA_OPTS="$JAVA_OPTS -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:InitiatingHeapOccupancyPercent=55 -XX:G1ReservePercent=15"
 JAVA_OPTS="$JAVA_OPTS -XX:MaxTenuringThreshold=15 -XX:ParallelGCThreads=8 -XX:+UnlockExperimentalVMOptions"
