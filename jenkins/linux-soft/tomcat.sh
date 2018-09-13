@@ -16,3 +16,10 @@ fi
 /home/apache-tomcat-*/bin/shutdown.sh
 /home/apache-tomcat-*/bin/startup.sh
 
+mkdir /home/sit
+cd /home/sit
+git clone https://git.vankeservice.com/DigitalServiceStudio/DigitalService.git
+
+cd /home/sit/DigitalService/digital-user-app
+mvn clean package install -U -Pdev -Dmaven.test.skip=true
+

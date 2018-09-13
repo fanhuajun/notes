@@ -9,3 +9,11 @@
 
 DBUser=zabbix
 DBHost=127.0.0.1
+
+
+# (?<==).*
+# User=zabbix
+
+sed -i 's#Mandatory:no#hhhhh#g' zabbix_agentd.conf
+
+sed -i 's#.*php_value date.timezone.*#php_value date.timezone Asia/Shanghai#g' /etc/php.ini

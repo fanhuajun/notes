@@ -22,3 +22,5 @@ EOF
 
 /usr/local/zabbix/sbin/zabbix_server
 
+
+
