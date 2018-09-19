@@ -1,5 +1,5 @@
 #########################################################
-# 构建 --> send file or execute commands over SSH --> SSH Publishers --> transfer 
+# 构建 --> send file or execute commands over SSH --> SSH Publishers --> transfers
 #########################################################
 #!/bin/bash
 cd /home
