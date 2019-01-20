@@ -17,3 +17,9 @@ https://github.com/buunguyen/octotree
 
 ## jmc.exe
 
+## 破解idea 
+
+> 将`JetbrainsCrack-3.1-release-enc.jar`放在`{idea}`目录下
+> 打开 `{idea}/bin/idea64.exe.vnoptions`
+> 在末尾插入下行
+`-javaagent: ../JetbrainsCrack-3.1-release-enc.jar`
