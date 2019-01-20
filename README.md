@@ -56,4 +56,4 @@ source /etc/locale.conf
 
 
 
-## [破解idea](https://raw.githubusercontent.com/fanhuajun/notes/master/tool/README.md)
+## [破解idea](https://github.com/fanhuajun/notes/tree/master/tool)
