@@ -21,5 +21,4 @@ https://github.com/buunguyen/octotree
 
 > 1、将[`JetbrainsCrack-3.1-release-enc.jar`](./JetbrainsCrack-3.1-release-enc.jar)放在`{idea}`目录下 <br/>
  2、打开 `{idea}/bin/idea64.exe.vnoptions`<br/>
- 3、在末尾插入下行<br/>
- 4、`-javaagent: ../JetbrainsCrack-3.1-release-enc.jar`<br/>
+ 3、在末尾插入下行 `-javaagent: ../JetbrainsCrack-3.1-release-enc.jar`<br/>
