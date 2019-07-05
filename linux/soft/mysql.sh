@@ -7,3 +7,4 @@ rpm -Uvh mysql57-community-release-el7-11.noarch.rpm
 yum -y install mysql-community-server
 service mysqld start
 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Fhj(252019)');
+
