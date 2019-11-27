@@ -1,0 +1,48 @@
+#class files
+*.class
+ 
+# Package Files #
+# *.jar
+*.war
+*.ear
+ 
+
+ 
+# ignore eclipse files
+*.project
+*.settings
+*.metadata
+*.classpath
+*settings/*
+.project
+.classpath
+.settings
+.metadata
+.DS_Store
+output
+/classes
+/target
+/.settings
+/.classpath
+/.project
+jira.mapping
+.eclipse-pmd
+
+
+# ignore idea files
+/.idea
+*.iml
+output_scm
+# ignore Maven generated target folders
+target
+
+
+# ignore work runtime
+logs
+*/logs
+*.log
+*.log.*
+coverage-report
+*/LOG_PATH_IS_UNDEFINED
+LOG_PATH_IS_UNDEFINED
+

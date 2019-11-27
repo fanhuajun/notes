@@ -1,0 +1,14 @@
+<filter>
+    <filter-name>sqlXssFilter</filter-name>
+    <filter-class>com.soufun.wap.filter.SqlXssFilter</filter-class>
+    <!-- 配置要过滤的敏感字符文件 -->
+      <init-param>
+         <param-name>dirtyWord</param-name>    
+         <param-value>/WEB-INF/DirtyWord.txt</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>sqlXssFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
