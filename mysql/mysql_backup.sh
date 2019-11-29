@@ -80,7 +80,7 @@ mysql_backup2()
     
     #将备份的时间、数据库名存入日志
     echo "------"$(date +'%Y-%m-%d %T')" Beginning database "${database2}" backup--------" >>${logfile}
-    ${mysqldump} -ussoServer -pssoServer --skip-extended-insert --databases ${database2} > ${backname}.sql 2>>${logfile} 2>&1
+    ${mysqldump} -ussoServer -pssoServer --skip-extended-insert --databases ${database2} --ignore-table=${database2}.sso_user_operate_log > ${backname}.sql 2>>${logfile} 2>&1
     
     #开始将压缩数据日志写入log
     echo $(date +'%Y-%m-%d %T')" Beginning zip ${dumpfile}.sql" >>${logfile}
