@@ -40,7 +40,15 @@ def getCode(username, phone):
 
 
 def sendCodeTip():
-    message = getCode("fanhuajun","")
-    # time.sleep(66)
-    if "手机号码不对" not in message:
+    message1 = getCode("fanhuajun","")
+    message2 = getCode("", "18729968867")
+    message3 = getCode("fanhuajun不存在", "18729968867")
+
+    if "手机号码不对" not in message1:
         raise RuntimeError("手机号码不对--提示有问题")
+
+    if "用户不存在" not in message2:
+        raise RuntimeError("手机号码不对--message="+message2)
+
+    if "用户不存在" not in message3:
+        raise RuntimeError("用户不存在--message=" + message3)

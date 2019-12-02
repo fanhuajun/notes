@@ -1,6 +1,7 @@
 import requests
 import json
 import constant
+import time
 
 '''
 curl -X GET \
@@ -84,4 +85,25 @@ def unLockedUsers():
         raise RuntimeError("无权限")
 
 
+# 人工冻结 --> 等待超时 --> 查看提示
+def freezeTimeTest():
+    errorToFreeze()
+    print("Start : %s" % time.ctime())
+    time.sleep(33)
+    print("End : %s" % time.ctime())
+    errorToFreeze()
 
+# 人工冻结 --> 人工错误密码 --> 查看提示
+def freezeInTimeTest():
+    errorToFreeze()
+    msg = login_error()
+    if "该账户已冻结" not in msg:
+        raise RuntimeError("冻结时间内提示错误")
+
+# 人工冻结 --> 解冻按钮 --> 人工输入错误密码 --> 查看提示
+def freezeSuccess():
+    errorToFreeze()
+    unLockedUsers()
+    msg = login_error()
+    if "用户名或密码不正确" not in msg:
+        raise RuntimeError("解冻失败 msg="+msg)
